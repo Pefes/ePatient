@@ -1,0 +1,12 @@
+.NavigationItem {
+    text-decoration: none;
+    color: white;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 400;
+    transition: transform 0.25s linear;
+    display: flex;
+}
+
+.NavigationItem:hover {
+    transform: rotate( 2deg ) scale( 1.1 );
+}

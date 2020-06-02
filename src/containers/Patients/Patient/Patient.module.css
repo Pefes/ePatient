@@ -1,0 +1,16 @@
+.Patient {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 4px;
+    width: 30%;
+    background-color: rgb(247, 245, 245);
+    margin-bottom: 15px;
+}
+
+.Patient:nth-of-type(2n) {
+    position: relative;
+    left: 30%;
+}
+
+.Name p {
+    font-family: "Noto Sans TC", sans-serif;
+}

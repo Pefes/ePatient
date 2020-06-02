@@ -1,0 +1,12 @@
+.Header {
+    background-color: rgb(6, 101, 179);
+    height: 7.5%;
+    width: 100%;
+}
+
+.Main {
+    background-color: white;
+    height: 92.5%;
+    width: 100%;
+    border-radius: 50% 0 0 0;
+}
