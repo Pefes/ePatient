@@ -5,7 +5,7 @@ import Brand from "./Brand/Brand";
 import classes from "./Navbar.module.css";
 
 
-const Navbar = ( props ) => {
+const navbar = ( props ) => {
     return (
         <nav className = { classes.Navbar } >
             <Brand />
@@ -16,4 +16,4 @@ const Navbar = ( props ) => {
 };
 
 
-export default Navbar;
+export default navbar;

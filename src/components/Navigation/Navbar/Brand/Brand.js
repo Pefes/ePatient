@@ -4,7 +4,7 @@ import classes from "./Brand.module.css";
 import { FaProcedures  } from "react-icons/fa";
 
 
-const Brand  = ( props ) => {
+const brand  = ( props ) => {
     return (
         <div className = { classes.Brand } >
             <FaProcedures className = { classes.Icon } />
@@ -14,4 +14,4 @@ const Brand  = ( props ) => {
 };
 
 
-export default Brand;
+export default brand;

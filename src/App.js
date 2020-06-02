@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Layout from "./hoc/Layout/Layout";
 import Patients from "./containers/Patients/Patients";
+import Card from "./containers/Card/Card";
 
 
 class App extends Component {
@@ -11,9 +12,9 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
+          <Route path = "/patients/:id" component = { Card } />
           <Route path = "/patients" component = { Patients } />
-          <Route path = "/" />
-          <Redirect to = "/" />
+          <Redirect to = "/patients" />
         </Switch>
       </Layout>
     );

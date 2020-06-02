@@ -1,0 +1,47 @@
+.Card {
+    background-color: white;
+    min-height: 92.5vh;
+    border-radius: 50% 0 50% 0;
+    transition: border-radius 0.5s linear;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.CardShow {
+    border-radius: 75% 0 0 0;
+}
+
+.PersonalInfo {
+    padding: 7.5% 0 0 7.5%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.PersonalInfo div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.25rem;
+    margin: 10px 0;
+}
+
+.PersonalInfo p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.Name {
+    font-size: 1.5rem;
+    border-bottom: 1px solid white;
+}
+
+.Icon {
+    margin-right: 5px;
+}
+
+.Observations {
+    align-self: flex-end;
+}
