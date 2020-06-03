@@ -7,7 +7,7 @@ const observation = ( props ) => {
     return (
         <article className = { classes.Observation } >
             <p>{ props.name }</p>
-            <div>{ props.index }</div>
+            <div onClick = { () => props.clicked( props.index ) } >{ props.index }</div>
         </article>
     );
 };

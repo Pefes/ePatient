@@ -24,7 +24,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin: 10px 0;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .Name {
-    font-size: 1.5rem;
+    font-size: 1.85rem;
     border-bottom: 1px solid white;
 }
 
@@ -44,4 +44,38 @@
 
 .Observations {
     align-self: flex-end;
+    width: 100%;
+    position: relative;
+}
+
+.Axis {
+    content: "";
+    background-color: rgb(85, 85, 85);
+    width: 25px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+
+.Axis::before {
+    content: "TIME";
+    font-family: "Noto Sans TC", sans-serif;
+    color: rgb(85, 85, 85);
+    font-size: 1.5rem;
+    position: absolute;
+    top: -150px;
+    left: -15px;
+}
+
+.Axis::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid rgb(85, 85, 85);
+    top: -80px;
+    left: -27.5px;
 }
