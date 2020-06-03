@@ -2,6 +2,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    font-family: "Noto Sans TC", sans-serif;
+    margin: 5px 10px;
 }
 
 .Observation p {
@@ -13,7 +15,10 @@
     height: 50px;
     border: 1px solid black;
     border-radius: 100%;
+    margin-left: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(6, 101, 179);
+    color: white;
 }
