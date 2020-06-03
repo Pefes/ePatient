@@ -25,7 +25,7 @@ class Patients extends Component {
     }
 
     componentDidMount() {
-        axios.get( "http://localhost:8080/patients" )
+        axios.get( "http://localhost:8081/patients" )
         .then(res => {
             this.setState({ ...this.state, patients: res.data });
         })

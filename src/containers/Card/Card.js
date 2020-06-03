@@ -17,7 +17,7 @@ class Card extends Component {
     }
 
     componentDidMount() {
-        axios.get( "http://localhost:8080/patients/" + this.props.match.params.id )
+        axios.get( "http://localhost:8081/patients/" + this.props.match.params.id )
         .then(res => {
             const patient = res.data;
             patient.observations = patient.observations.sort( this.compareDateTime );
