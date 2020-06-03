@@ -1,15 +1,14 @@
 .Card {
     background-color: white;
-    min-height: 92.5vh;
-    border-radius: 50% 0 50% 0;
-    transition: border-radius 0.5s linear;
+    height: 92.5vh;
+    border-radius: 50% 0 0 0;
+    transition: border-radius 1s linear;
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
 }
 
 .CardShow {
-    border-radius: 75% 0 0 0;
+    border-radius: 85% 0 0 0;
 }
 
 .PersonalInfo {
@@ -17,7 +16,13 @@
     color: white;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    opacity: 0;
+    transition: opacity 1s linear;
+    transition-delay: 1s;
+}
+
+.PersonalInfoShow {
+    opacity: 1;
 }
 
 .PersonalInfo div {
@@ -46,10 +51,17 @@
     align-self: flex-end;
     width: 100%;
     position: relative;
+    transform: translateY( 5% );
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.ObservationsShow {
+    transform: translateY( 0 );
+    opacity: 1;
 }
 
 .Axis {
-    content: "";
     background-color: rgb(85, 85, 85);
     width: 25px;
     height: 100%;
@@ -78,4 +90,65 @@
     border-bottom: 80px solid rgb(85, 85, 85);
     top: -80px;
     left: -27.5px;
+}
+
+.PageCounter {
+    position: fixed;
+    bottom: -15%;
+    left: 50%;
+    transform: translateX( -50% );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgb(6, 101, 179);
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+    color: rgb(6, 101, 179);
+    padding-top: 10px;
+    transition: bottom 0.5s ease-out;
+    transition-delay: 0.5s;
+}
+
+.PageCounterShow {
+    bottom: 0;
+}
+
+.PageCounter div {
+    padding: 10px 50px;
+    font-size: 2rem;
+    user-select: none;
+}
+
+.Button {
+    font-size: 3rem;
+    cursor: pointer;
+    transition: transform 0.25s linear;
+}
+
+.Button:hover {
+    transform: scale( 1.1 );
+}
+
+@media ( max-width: 660px ) {
+    .Card {
+        background-color: rgb(6, 101, 179);
+        height: unset;
+        min-height: 100vh;
+        padding-bottom: 75px;
+    }
+
+    .PersonalInfo {
+        margin-bottom: 100px;
+    }
+
+    .Axis {
+        display: none;
+    }
+
+    .Observations {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

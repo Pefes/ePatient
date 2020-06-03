@@ -9,7 +9,7 @@ const navigationItems = ( props ) => {
         <ul className = { classes.NavigationItems } >
             <NavigationItem
                 link = "/patients"
-                >Patients
+                >SHOW ALL PATIENTS
             </NavigationItem>
         </ul>
     );

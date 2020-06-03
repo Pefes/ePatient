@@ -8,5 +8,5 @@
 }
 
 .NavigationItem:hover {
-    transform: rotate( 2deg ) scale( 1.1 );
+    transform: scale( 1.1 );
 }

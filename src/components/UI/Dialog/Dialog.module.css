@@ -19,12 +19,13 @@
     top: 50%;
     left: 125px;
     padding: 10px;
+    min-width: 400px;
     transform: translateY( -50% );
     background-color: white;
-    border-top: 2px solid rgb(202, 202, 202);
-    border-left: 2px solid rgb(202, 202, 202);
-    border-bottom: 2px solid rgb(102, 102, 102);
-    border-right: 2px solid rgb(102, 102, 102);
+    border-top: 3px solid rgb(202, 202, 202);
+    border-left: 3px solid rgb(202, 202, 202);
+    border-bottom: 3px solid rgb(102, 102, 102);
+    border-right: 3px solid rgb(102, 102, 102);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -52,4 +53,18 @@
     text-transform: uppercase;
     color: rgb(6, 101, 179);
     margin-right: 20px;
+}
+
+@media ( max-width: 660px ) {
+    .Info {
+        top: 50%;
+        left: 50%;
+        transform: translate( -50%, -50% );
+    }
+}
+
+@media ( max-width: 420px ) {
+    .Info {
+        min-width: 300px;
+    }
 }

@@ -54,10 +54,31 @@
     text-decoration: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: transform 0.1s linear, background-color 0.25s linear;
+    transition: transform 0.1s linear, background-color 0.25s linear, color 0.25s linear;
 }
 
 .Button:hover {
-    background-color: rgb(59, 125, 179);
+    background-color: white;
+    color: rgb(6, 101, 179);
     transform: scale( 1.1 );
+}
+
+@media ( max-width: 730px ) {
+    .Patient:nth-of-type( 2n ) {
+        left: 0;
+        width: 215px;
+        margin: 0 7.5% 15px 0;
+    }
+
+    .Patient:nth-of-type( 2n + 1 ) {
+        width: 215px;
+        margin: 0 0 15px 7.5%;
+    }
+}
+
+@media ( max-width: 530px ) {
+    .Patient {
+        margin: 0 !important;
+        margin-bottom: 15px !important;
+    }
 }

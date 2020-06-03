@@ -1,0 +1,37 @@
+.Spinner {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+}
+
+.Spinner:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid rgb(6, 101, 179);
+  border-color: rgb(6, 101, 179) transparent rgb(6, 101, 179) transparent;
+  animation: Spinner 1.2s linear infinite;
+}
+
+@keyframes Spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media ( max-width: 470px ) {
+  .Spinner:after {
+    border: 6px solid white;
+    border-color: white transparent white transparent;
+  }
+}

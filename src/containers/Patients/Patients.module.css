@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-radius: 50% 0 50% 0;
+    border-radius: 50% 0 0 0;
     width: 100%;
-    min-height: 100%;
+    height: 100vh;
 }
 
 .Patients {
@@ -14,6 +14,14 @@
     align-items: center;
     padding-top: 10%;
     height: 100%;
+    transform: translateX( 100% ) scale( 0 );
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.25s ease-out;
+}
+
+.PatientsShow {
+    transform: translateX( 0 ) scale( 1 );
+    opacity: 1;
 }
 
 .Sort {
@@ -42,4 +50,50 @@
 
 .Sort select:hover {
     transform: scale( 1.1 );
+}
+
+@media ( max-width: 1070px ) {
+    .Sort {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .Sort p {
+        margin-bottom: 10px;
+    }
+}
+
+@media ( max-width: 730px ) {
+    .Patients {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .Sort p {
+        font-size: 1rem;
+    }
+}
+
+@media ( max-width: 530px ) {
+    .Patients {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
+
+@media ( max-width: 470px ) {
+    .PatientsWrapper {
+        background-color: rgb(6, 101, 179);
+        height: unset;
+        min-height: 100vh;
+    }
+
+    .Sort {
+        align-items: center;
+    }
 }

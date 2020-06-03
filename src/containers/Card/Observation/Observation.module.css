@@ -9,11 +9,18 @@
 
 .Observation p {
     margin: 0;
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .Observation div {
     width: 50px;
     height: 50px;
+    min-width: 50px;
+    min-height: 50px;
     border: 1px solid black;
     border-radius: 100%;
     margin-left: 10px;
@@ -24,10 +31,38 @@
     color: white;
     transition: transform 0.25s linear, color 0.25s linear, background-color 0.25s linear;
     cursor: pointer;
+    user-select: none;
 }
 
 .Observation div:hover {
     transform: scale( 1.1 );
     color: rgb(6, 101, 179);
     background-color: white;
+}
+
+@media ( max-width: 660px ) {
+    .Observation {
+        margin-right: 0;
+        margin-left: 15px;
+    }
+
+    .Observation div {
+        color: rgb(6, 101, 179);
+        background-color: white;
+        margin: 0;
+        order: 1;
+    }
+
+    .Observation div:hover {
+        color: white;
+        background-color: rgb(6, 101, 179);
+    }
+
+    .Observation p {
+        color: white;
+        width: 100%;
+        white-space: normal;
+        order: 2;
+        margin-left: 5px;
+    }
 }
