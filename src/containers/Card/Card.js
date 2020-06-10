@@ -9,10 +9,13 @@ import Dialog from "../../components/UI/Dialog/Dialog";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 
+
 class Card extends Component {
     state = {
         patient: null,
+        informations: [],
         modalIndex: null,
+        interval: "all",
         page: 1
     }
 
@@ -20,6 +23,15 @@ class Card extends Component {
         axios.get( "http://localhost:8081/patients/" + this.props.match.params.id )
         .then(res => {
             const patient = res.data;
+            
+            patient.observations = patient.observations.map(observation => {
+                return { ...observation, type: "observation" };
+            });
+
+            for( let medication of patient.medicationRequests ) {
+                patient.observations.push({ ...medication, type: "medicationRequest" });
+            }
+
             patient.observations = patient.observations.sort( this.compareDateTime );
             patient.observations = patient.observations.map(observation => {
                 return { 
@@ -29,7 +41,7 @@ class Card extends Component {
                 }
             });
 
-            this.setState({ ...this.state, patient: patient });
+            this.setState({ ...this.state, patient: patient, informations: [ ...patient.observations ] });
         })
         .catch(error => {
             console.log( "Error occured: " + error );
@@ -50,7 +62,7 @@ class Card extends Component {
 
     onClickMoreHandler = () => {
         this.setState(( prevState ) => {
-            if ( prevState.page < Math.ceil( prevState.patient.observations.length / 30 ) )
+            if ( prevState.page < Math.ceil( prevState.informations.length / 30 ) )
                 return { ...prevState, page: prevState.page + 1 };
             else
                 return { ...prevState };
@@ -66,10 +78,31 @@ class Card extends Component {
         });
     }
 
+    selectOnChangeHandler = ( event ) => {
+        if( event.target.value === "all" )
+            this.setState({ ...this.state, interval: "all", informations: [ ...this.state.patient.observations ], page: 1 });
+        else
+            this.setState({ ...this.state, interval: "interval" });
+    }
+
+    pickIntervalOnChangeHandler = ( event ) => {
+        const newInformations = [];
+        const pickedInterval = new Date( event.target.value );
+
+        for( let observation of this.state.patient.observations ) {
+            let observationDate = new Date( observation.dateTime );
+            if( pickedInterval.getMonth() === observationDate.getMonth() && pickedInterval.getFullYear() === observationDate.getFullYear() )
+                newInformations.push({ ...observation });
+        }
+
+        this.setState({ ...this.state, informations: newInformations, page: 1 });
+    }
+
     render() {
         let dialog = null;
         let observations = [];
         let patientInfo = null;
+        let pickInterval = null;
         const cardClasses = [ classes.Card ];
         const personalInfoClasses = [ classes.PersonalInfo ];
         const observationsClasses = [ classes.Observations ];
@@ -85,17 +118,18 @@ class Card extends Component {
 
             if ( this.state.modalIndex !== null )
                 dialog = <Dialog  
-                            observation = { this.state.patient.observations[this.state.modalIndex] }
+                            observation = { this.state.informations[this.state.modalIndex] }
                             backgroundClicked = { this.backgroundOnClickHandler } />;
     
             for ( let i = this.state.page * 30 - 30; i < this.state.page * 30; i++ ) {
-                if ( i < this.state.patient.observations.length )
+                if ( i < this.state.informations.length )
                     observations.push(
                         <Observation 
                             key = { i }
                             index = { i }
-                            observationsSize = { this.state.patient.observations.length }
-                            name = { this.state.patient.observations[i].name }
+                            observationsSize = { this.state.informations.length }
+                            name = { this.state.informations[i].name }
+                            type = { this.state.informations[i].type }
                             clicked = { this.observationOnClickHandler } />
                     );
             }
@@ -107,6 +141,12 @@ class Card extends Component {
                         <div><FaBirthdayCake className = { classes.Icon } /><p>{ this.state.patient.birthDate }</p></div>
                     </React.Fragment>
             );
+
+            if( this.state.interval === "interval" )
+                pickInterval = <input 
+                    type = "month" 
+                    onChange = { this.pickIntervalOnChangeHandler } 
+                    placeholder = "month YYYY" />
         }
         
         return (
@@ -114,6 +154,13 @@ class Card extends Component {
                 { dialog }
                 <article className = { cardClasses.join(" ") } >     
                     { spinner }
+                    <div className = { classes.Interval } >
+                        <select onChange = { this.selectOnChangeHandler } >
+                            <option value = "all">All</option>
+                            <option value = "interval">Pick month...</option>
+                        </select>
+                        { pickInterval }
+                    </div>
                     <section className = { personalInfoClasses.join( " " ) } >
                         { patientInfo }
                     </section>

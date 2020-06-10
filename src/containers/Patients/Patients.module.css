@@ -4,13 +4,15 @@
     background-color: white;
     border-radius: 50% 0 0 0;
     width: 100%;
-    height: 100vh;
+    height: 92.5vh;
+    min-height: 1000px;
+    position: relative;
 }
 
 .Patients {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding-top: 10%;
     height: 100%;
@@ -22,6 +24,39 @@
 .PatientsShow {
     transform: translateX( 0 ) scale( 1 );
     opacity: 1;
+}
+
+.Search {
+    position: absolute;
+    top: 17.5px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Search input {
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+.Search button {
+    padding: 5px;
+    background-color: rgb(6, 101, 179);
+    color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+.Search button:hover {
+    background-color: white;
+    color: rgb(6, 101, 179);
+    transform: scale( 1.1 );
 }
 
 .Sort {
@@ -80,7 +115,7 @@
 @media ( max-width: 530px ) {
     .Patients {
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: nowrap;
     }
@@ -94,6 +129,22 @@
     }
 
     .Sort {
+        margin-top: 75px;
         align-items: center;
+    }
+
+    .Search {
+        right: 50%;
+        transform: translateX( 50% );
+    }
+
+    .Search button {
+        background-color: white;
+        color: rgb(6, 101, 179);
+    }
+
+    .Search button:hover {
+        background-color: rgb(6, 101, 179);
+        color: white;
     }
 }

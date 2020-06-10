@@ -9,7 +9,9 @@ import classes from "./Patients.module.css";
 class Patients extends Component {
     state = {
         patients: null,
-        sortBy: "name"
+        sortBy: "name",
+        searchBy: null,
+        showPatients: null
     };
 
     selectOnChangeHandler = ( event ) => {
@@ -27,11 +29,26 @@ class Patients extends Component {
     componentDidMount() {
         axios.get( "http://localhost:8081/patients" )
         .then(res => {
-            this.setState({ ...this.state, patients: res.data });
+            this.setState({ ...this.state, patients: res.data, showPatients: res.data });
         })
         .catch(error => {
             console.log( "Error occured: " + error );
         });
+    }
+
+    searchOnClickHandler = () => {
+        const foundPatients = [];
+
+        for( let patient of this.state.patients ) {
+            if( patient.name.toLowerCase().includes( this.state.searchBy ) )
+                foundPatients.push({ ...patient });
+        }
+
+        this.setState({ ...this.state, showPatients: foundPatients });
+    }
+
+    searchOnChangeHandler = ( event ) => {
+        this.setState({ ...this.state, searchBy: event.target.value });
     }
 
     render() {
@@ -45,9 +62,9 @@ class Patients extends Component {
             let sortedPatients;
 
             if ( this.state.sortBy === "name" )
-                sortedPatients = this.state.patients.sort( this.compareName );
+                sortedPatients = this.state.showPatients.sort( this.compareName );
             else if ( this.state.sortBy === "birthdate" )
-                sortedPatients = this.state.patients.sort( this.compareBirthdate );
+                sortedPatients = this.state.showPatients.sort( this.compareBirthdate );
     
             patients = sortedPatients.map(patient => {
                     return (
@@ -70,6 +87,10 @@ class Patients extends Component {
                         <option value = "name">Name</option>
                         <option value = "birthdate">Birthdate</option>
                     </select>
+                </div>
+                <div className = { classes.Search }>
+                    <input type = "text" placeholder = "Name..." onChange = { this.searchOnChangeHandler } />
+                    <button onClick = { this.searchOnClickHandler } >Search</button>
                 </div>
 
                 <div className = { patientsClasses.join(" ") } >

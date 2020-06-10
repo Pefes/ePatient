@@ -14,6 +14,7 @@
     justify-content: flex-end;
     overflow: hidden;
     white-space: nowrap;
+    user-select: none;
 }
 
 .Observation div {
@@ -21,6 +22,7 @@
     height: 50px;
     min-width: 50px;
     min-height: 50px;
+    font-size: 1.5rem;
     border: 1px solid black;
     border-radius: 100%;
     margin-left: 10px;

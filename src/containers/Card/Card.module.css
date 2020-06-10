@@ -1,14 +1,39 @@
 .Card {
     background-color: white;
     height: 92.5vh;
+    min-height: 1000px;
     border-radius: 50% 0 0 0;
     transition: border-radius 1s linear;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .CardShow {
     border-radius: 85% 0 0 0;
+}
+
+.Interval {
+    position: absolute;
+    width: 175px;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Interval select {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.Interval input {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.Interval input[type = "month"] {
+    user-select: none;
 }
 
 .PersonalInfo {
@@ -19,6 +44,7 @@
     opacity: 0;
     transition: opacity 1s linear;
     transition-delay: 1s;
+    user-select: none;
 }
 
 .PersonalInfoShow {
@@ -65,6 +91,8 @@
     background-color: rgb(85, 85, 85);
     width: 25px;
     height: 100%;
+    min-height: 500px;
+    margin-top: 25px;
     position: absolute;
     top: 0;
     right: 50px;
@@ -136,6 +164,12 @@
         height: unset;
         min-height: 100vh;
         padding-bottom: 75px;
+    }
+
+    .Interval {
+        top: 200px;
+        right: 50%;
+        transform: translateX( 50% );
     }
 
     .PersonalInfo {
