@@ -37,14 +37,17 @@ class Patients extends Component {
     }
 
     searchOnClickHandler = () => {
-        const foundPatients = [];
+        this.setState(prevState => {
+            const foundPatients = [];
 
-        for( let patient of this.state.patients ) {
-            if( patient.name.toLowerCase().includes( this.state.searchBy ) )
-                foundPatients.push({ ...patient });
-        }
-
-        this.setState({ ...this.state, showPatients: foundPatients });
+            for( let patient of prevState.patients ) {
+                if( patient.name.toLowerCase().includes( prevState.searchBy.toLowerCase() ) )
+                    foundPatients.push({ ...patient });
+            }
+    
+            return { ...prevState, showPatients: foundPatients };
+        });
+        
     }
 
     searchOnChangeHandler = ( event ) => {
